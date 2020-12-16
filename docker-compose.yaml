@@ -3,9 +3,7 @@ services:
 
   front:
     container_name: front
-    build:
-      context: front
-      dockerfile: Dockerfile
+    image: aosmon17/quotes-front:v1
     ports:
       - "3001:3001"
     networks:
@@ -13,9 +11,7 @@ services:
 
   back:
     container_name: api
-    build:
-      context: back
-      dockerfile: Dockerfile
+    image: aosmon17/quotes-back:v1
     ports:
       - "3000:3000"
     networks:
@@ -23,9 +19,7 @@ services:
 
   data:
     container_name: db
-    build:
-      context: data
-      dockerfile: Dockerfile
+    image: aosmon17/quotes-data:v1
     ports:
       - "3306:3306"
     environment:
@@ -38,9 +32,7 @@ services:
 
   data-script:
     container_name: data-script
-    build:
-      context: data-script
-      dockerfile: Dockerfile
+    image: aosmon17/quotes-script:v1
     networks:
       - myapp
 
