@@ -63,6 +63,6 @@ spec:
             secretKeyRef:
               name: scriptsecret
               key: password 
-        command: ['sh', '-c', "until mysql -h ${MYSQL_DB_HOST} -u ${MYSQL_USER} -p${MYSQL_USER_PASSWORD} -e 'show databases;'; do echo waiting for mydb; sleep 2; done"]
+        command: ['sh', '-c', "until mysql -h ${MYSQL_DB_HOST} -u ${MYSQL_USER} -p${MYSQL_USER_PASSWORD} -e 'show databases;'; do echo 'waiting for mydb'; sleep 2; done"]
       restartPolicy: Always
 status: {}
