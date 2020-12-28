@@ -68,7 +68,7 @@ spec:
       containers:
       - image: aosmon17/quotes-back:v1
         env: 
-          name: SQLALCHEMY_DATABASE_URI
+        - name: SQLALCHEMY_DATABASE_URI
           valueFrom:
             secretKeyRef:
               name: backsecret
