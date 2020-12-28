@@ -26,6 +26,12 @@ spec:
     spec:
       containers:
       - image: aosmon17/quotes-back:v1
+        env: 
+          name: SQLALCHEMY_DATABASE_URI
+          valueFrom:
+            secretKeyRef:
+              name: backsecret
+              key: DATABASE_URI
         name: api
         ports:
         - containerPort: 3000
@@ -88,11 +94,20 @@ spec:
         - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: "yes"
         - name: MYSQL_DATABASE
-          value: mydatabase
+          valueFrom: 
+            secretKeyRef:
+              name: datasecret
+              key: DATABASE
         - name: MYSQL_PASSWORD
-          value: root
+          valueFrom: 
+            secretKeyRef:
+              name: datasecret
+              key: PASSWORD
         - name: MYSQL_ROOT_PASSWORD
-          value: root
+          valueFrom: 
+            secretKeyRef:
+              name: datasecret
+              key: ROOT_PASSWORD
         image: aosmon17/quotes-data:v1
         name: db
         ports:
@@ -132,6 +147,22 @@ spec:
       containers:
       - image: aosmon17/quotes-script:v1
         name: data-script
+        env:
+        - name: MYSQL_DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: scriptsecret
+              key: host
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: scriptsecret
+              key: user    
+        - name: MYSQL_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: scriptsecret
+              key: password                        
         resources: {}
       restartPolicy: Always
 status: {}
