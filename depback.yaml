@@ -25,7 +25,7 @@ spec:
         io.kompose.service: back
     spec:
       containers:
-      - image: aosmon17/quotes-back:v1
+        image: aosmon17/quotes-back:v1
         env: 
           name: SQLALCHEMY_DATABASE_URI
           valueFrom:
