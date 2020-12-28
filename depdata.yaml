@@ -67,7 +67,7 @@ spec:
           name: mypd
       volumes:
       - name: mypd
-        PersistentVolumeClaim: 
+        persistentVolumeClaim: 
           claimeName: myclaim
       restartPolicy: Always
 status: {}
