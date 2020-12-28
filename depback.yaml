@@ -67,6 +67,12 @@ spec:
     spec:
       containers:
       - image: aosmon17/quotes-back:v1
+        env: 
+          name: SQLALCHEMY_DATABASE_URI
+          valueFrom:
+            secretKeyRef:
+              name: backsecret
+              key: DATABASE_URI
         name: api
         ports:
         - containerPort: 3000
