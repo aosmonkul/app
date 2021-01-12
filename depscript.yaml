@@ -46,7 +46,7 @@ spec:
         resources: {}
       initContainers:
       - name: init-script
-        image: busybox:1.28
+        image: mysql
         env:
         - name: MYSQL_DB_HOST
           valueFrom:
